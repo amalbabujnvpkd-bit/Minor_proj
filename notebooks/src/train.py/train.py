@@ -16,3 +16,12 @@ def load_reviews(folder_path, label):
         })
 
     return reviews
+    positive_reviews = load_reviews(
+    os.path.join(DATA_PATH, "train", "pos"),
+    "positive"
+)
+
+negative_reviews = load_reviews(
+    os.path.join(DATA_PATH, "train", "neg"),
+    "negative"
+)
