@@ -17,6 +17,16 @@ def load_reviews(folder_path, label):
 import re
 
 def clean_text(text):
+    from sklearn.metrics import accuracy_score, classification_report
+
+y_pred = model.predict(X_test_tfidf)
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("Accuracy:", accuracy)
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
     from sklearn.linear_model import LogisticRegression
 
 model = LogisticRegression(max_iter=1000)
