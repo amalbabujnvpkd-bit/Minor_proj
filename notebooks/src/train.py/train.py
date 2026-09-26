@@ -17,6 +17,18 @@ def load_reviews(folder_path, label):
 import re
 
 def clean_text(text):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+vectorizer = TfidfVectorizer(
+    max_features=10000,
+    stop_words="english"
+)
+
+X_train_tfidf = vectorizer.fit_transform(X_train)
+X_test_tfidf = vectorizer.transform(X_test)
+
+print("Training data shape:", X_train_tfidf.shape)
+print("Testing data shape:", X_test_tfidf.shape)
     from sklearn.model_selection import train_test_split
 
 X = df["review"]
