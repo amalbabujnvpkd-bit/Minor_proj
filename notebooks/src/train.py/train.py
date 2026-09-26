@@ -17,6 +17,21 @@ def load_reviews(folder_path, label):
 import re
 
 def clean_text(text):
+    from sklearn.model_selection import train_test_split
+
+X = df["review"]
+y = df["sentiment"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+print("Training reviews:", len(X_train))
+print("Testing reviews:", len(X_test))
     text = re.sub(r"<.*?>", " ", text)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
