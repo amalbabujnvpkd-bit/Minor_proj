@@ -25,3 +25,9 @@ negative_reviews = load_reviews(
     os.path.join(DATA_PATH, "train", "neg"),
     "negative"
 )
+all_reviews = positive_reviews + negative_reviews
+
+df = pd.DataFrame(all_reviews)
+
+print(df.head())
+print(df["sentiment"].value_counts())
