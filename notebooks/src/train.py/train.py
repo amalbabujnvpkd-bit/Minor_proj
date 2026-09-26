@@ -14,7 +14,15 @@ def load_reviews(folder_path, label):
             "review": text,
             "sentiment": label
         })
+import re
 
+def clean_text(text):
+    text = re.sub(r"<.*?>", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+    df["review"] = df["review"].apply(clean_text)
+
+print(df.head())
     return reviews
     positive_reviews = load_reviews(
     os.path.join(DATA_PATH, "train", "pos"),
