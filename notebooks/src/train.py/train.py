@@ -17,6 +17,12 @@ def load_reviews(folder_path, label):
 import re
 
 def clean_text(text):
+    import joblib
+
+joblib.dump(model, "../models/sentiment_model.pkl")
+joblib.dump(vectorizer, "../models/tfidf_vectorizer.pkl")
+
+print("Model and vectorizer saved successfully!")
     from sklearn.metrics import accuracy_score, classification_report
 
 y_pred = model.predict(X_test_tfidf)
