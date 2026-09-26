@@ -17,6 +17,13 @@ def load_reviews(folder_path, label):
 import re
 
 def clean_text(text):
+    from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression(max_iter=1000)
+
+model.fit(X_train_tfidf, y_train)
+
+print("Model training completed!")
     from sklearn.feature_extraction.text import TfidfVectorizer
 
 vectorizer = TfidfVectorizer(
